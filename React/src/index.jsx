@@ -1,7 +1,5 @@
-/* @jsx createElement */
-function createElement() {
-  return 'hello world!';
-}
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const element = (
   <div>
@@ -9,4 +7,4 @@ const element = (
   </div>
 );
 
-console.log(element);
+ReactDOM.render(element, document.getElementById('app'));
