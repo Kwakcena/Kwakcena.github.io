@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Button(value) {
+function Button(props) {
+  const { children } = props;
   return (
     <button type="button">
-      {value}
+      {children}
     </button>
   );
 }
@@ -13,7 +14,7 @@ function Buttons() {
   return (
     <p>
       {[1, 2, 3].map((i) => (
-        Button(i)
+        <Button>{i}</Button>
       ))}
     </p>
   );
@@ -23,7 +24,7 @@ const element = (
   <div>
     <p>Hello world!</p>
     <p>Hi!</p>
-    {renderButtons()}
+    {<Buttons />}
   </div>
 );
 
