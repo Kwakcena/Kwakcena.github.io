@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Button(props) {
-  const { children } = props;
+function Button({ children }) {
   return (
     <button type="button">
       {children}
@@ -20,12 +19,17 @@ function Buttons() {
   );
 }
 
-const element = (
-  <div>
-    <p>Hello world!</p>
-    <p>Hi!</p>
-    {<Buttons />}
-  </div>
-);
+function App() {
+  return (
+    <div>
+      <p>Hello world!</p>
+      <p>Hi!</p>
+      <Buttons />
+    </div>
+  );
+}
 
-ReactDOM.render(element, document.getElementById('app'));
+ReactDOM.render(
+  <App />,
+  document.getElementById('app'),
+);
