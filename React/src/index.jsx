@@ -7,6 +7,7 @@ function handleClick() {
   console.log('click!');
   count += 1;
   console.log(count);
+  render();
 }
 
 function Counter() {
@@ -51,7 +52,11 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app'),
-);
+function render() {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app'),
+  );
+}
+
+render();
