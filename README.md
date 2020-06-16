@@ -2,3 +2,4 @@
 
 - [] 1강: JSX
 - [x] 2강: React
+- [x] 3강: Test 
