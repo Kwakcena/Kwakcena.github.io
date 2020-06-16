@@ -2,6 +2,7 @@ module.exports = {
     env: {
       browser: true,
       es6: true,
+      // jest 에서도 eslint를 쓰도록 함
       jest: true,
     },
     extends: [
