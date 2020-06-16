@@ -2,9 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import '@testing-library/jest-dom';
-
-import Item from './Item'
+import Item from './Item';
 
 test('Item', () => {
   const task = {
@@ -17,4 +15,5 @@ test('Item', () => {
   ));
 
   expect(container).toHaveTextContent('뭐라도 하기');
+  expect(container).toHaveTextContent('완료');
 });
