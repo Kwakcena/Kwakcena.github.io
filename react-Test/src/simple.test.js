@@ -13,3 +13,5 @@ test('add', () => {
 
 // Signature : 메소드, function에 대한 구별할 수 있는 특징
 // name(add), parameters(x, y), return(result)
+
+// TDD Cycle: Red - green - refactoring
