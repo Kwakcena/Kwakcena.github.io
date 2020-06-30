@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import restaurants from '../fixtures/restaurants';
+
 import {
   setRestaurants,
 } from './actions';
