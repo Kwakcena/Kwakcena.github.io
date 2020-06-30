@@ -21,6 +21,9 @@ test('App', () => {
     <App />
   ));
 
-  // expect(getByText(/김밥제국/)).not.toBeNull();
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith({
+    type: 'setRestaurants',
+    payload: { restaurants },
+  });
+  expect(getByText(/김밥제국/)).not.toBeNull();
 });
