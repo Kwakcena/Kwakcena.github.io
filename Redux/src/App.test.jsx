@@ -21,5 +21,6 @@ test('App', () => {
     <App />
   ));
 
-  expect(getByText(/김밥제국/)).not.toBeNull();
+  // expect(getByText(/김밥제국/)).not.toBeNull();
+  expect(dispatch).toBeCalled();
 });
