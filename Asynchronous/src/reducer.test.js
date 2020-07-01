@@ -4,6 +4,7 @@ import {
   setRestaurants,
   changeRestaurantField,
   addRestaurant,
+  setCategories,
 } from './actions';
 import restaurants from '../fixtures/restaurants';
 
@@ -55,6 +56,20 @@ describe('reducer', () => {
       expect(restaurant.name).toBe('마법사주방');
       expect(state.restaurant.name).toBe('');
       expect(state.newId).toBe(102);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('change categories', () => {
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+      const initialState = {
+        categories: [],
+      };
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
