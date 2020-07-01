@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantForm from './RestaurantForm';
 
@@ -10,12 +10,18 @@ import {
 
 export default function RestaurantCreateContainer() {
   const dispatch = useDispatch();
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
+  }));
+
   function handleClick() {
     // TODO: dispatch
     dispatch(addRestaurant());
   }
+
   return (
     <RestaurantForm
+      restaurant={restaurant}
       onClick={handleClick}
     />
   );

@@ -12,7 +12,11 @@ test('RestaurantCreateContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-
+    restaurant: {
+      name: '마법',
+      category: '이탈',
+      address: '서울시',
+    },
   }));
 
   const { getByText, getByDisplayValue } = render((
