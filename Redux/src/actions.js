@@ -7,6 +7,8 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function xxx() {
-  // TODO: delete this.
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
 }
