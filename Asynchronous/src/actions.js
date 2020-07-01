@@ -21,3 +21,12 @@ export function changeRestaurantField({ name, value }) {
     },
   };
 }
+
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
