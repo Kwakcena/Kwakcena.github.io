@@ -32,7 +32,11 @@ test('RestaurantForm', () => {
       value: '서울시 강남구 역삼동',
     },
   });
-  expect(handleChange).toBeCalled();
+
+  expect(handleChange).toBeCalledWith({
+    name: 'address',
+    value: '서울시 강남구 역삼동',
+  });
 
   fireEvent.click(getByText(/등록/));
   expect(handleClick).toBeCalled();
