@@ -22,5 +22,18 @@ export default function reducer(state = initalState, action) {
       },
     };
   }
+
+  if (action.type === 'addRestaurant') {
+    const { restaurants, restaurant } = state;
+    return {
+      ...state,
+      restaurants: [...restaurants, restaurant],
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+    };
+  }
   return state;
 }
