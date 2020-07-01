@@ -9,11 +9,19 @@ import {
   setRestaurants,
 } from './actions';
 
+function loadRestaurants({ dispatch }) {
+  const restaurants = [];
+  // TODO: load restaurants from API server.
+  // 1. API server 확보
+  // 2. fetch
+  dispatch(setRestaurants(restaurants));
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRestaurants([]));
+    loadRestaurants();
   }, []);
 
   return (
