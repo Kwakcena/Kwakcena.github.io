@@ -7,7 +7,13 @@ import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 import {
   setRestaurants,
+  setCategories,
 } from './actions';
+
+function loadCategories({ dispatch }) {
+  const categories = [];
+  dispatch(setCategories(categories));
+}
 
 function loadRestaurants({ dispatch }) {
   const restaurants = [];
@@ -21,7 +27,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRestaurants();
+    loadCategories({ dispatch });
+    loadRestaurants({ dispatch });
   }, []);
 
   return (
