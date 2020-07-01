@@ -7,17 +7,9 @@ import RestaurantsContainer from './RestaurantsContainer';
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 import {
-  setRestaurants,
+  loadRestaurants,
   loadCategories,
 } from './actions';
-
-function loadRestaurants({ dispatch }) {
-  const restaurants = [];
-  // TODO: load restaurants from API server.
-  // 1. API server 확보
-  // 2. fetch
-  dispatch(setRestaurants(restaurants));
-}
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,7 +20,7 @@ export default function App() {
     // 대한 처리를 하고 상태를 업데이트 하도록 한다.
     // 이를 위해 redux thunk를 사용한다.
     dispatch(loadCategories());
-    loadRestaurants({ dispatch });
+    dispatch(loadRestaurants());
   }, []);
 
   return (

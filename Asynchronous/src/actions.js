@@ -9,6 +9,14 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function loadRestaurants() {
+  return async (dispatch) => {
+    // TODO: fetch ...
+    const restaurants = [];
+    dispatch(setRestaurants(restaurants));
+  };
+}
+
 export function addRestaurant() {
   return {
     type: 'addRestaurant',
