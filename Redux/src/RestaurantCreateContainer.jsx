@@ -16,7 +16,6 @@ export default function RestaurantCreateContainer() {
   }));
 
   function handleClick() {
-    // TODO: dispatch
     dispatch(addRestaurant());
   }
 
