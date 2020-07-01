@@ -6,6 +6,8 @@ import RestaurantForm from './RestaurantForm';
 
 test('RestaurantForm', () => {
   const handleClick = jest.fn();
+  const handleChange = jest.fn();
+
   const restaurant = {
     name: '마법사주방',
     category: '이탈리안',
@@ -15,6 +17,7 @@ test('RestaurantForm', () => {
   const { getByText, getByDisplayValue } = render((
     <RestaurantForm
       restaurant={restaurant}
+      onChange={handleChange}
       onClick={handleClick}
     />
   ));
@@ -23,6 +26,14 @@ test('RestaurantForm', () => {
   expect(getByDisplayValue('이탈리안')).not.toBeNull();
   expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
   expect(getByText(/등록/)).not.toBeNull();
+
+  fireEvent.change(getByDisplayValue('서울시 강남구'), {
+    target: {
+      value: '서울시 강남구 역삼동',
+    },
+  });
+  expect(handleChange).toBeCalled();
+
   fireEvent.click(getByText(/등록/));
   expect(handleClick).toBeCalled();
 });
