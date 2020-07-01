@@ -47,10 +47,11 @@ describe('reducer', () => {
         },
       };
       const state = reducer(initialState, addRestaurant());
+
       expect(state.restaurants).toHaveLength(1);
-      expect(state.restaurant.id).toBe(101);
+      expect(state.restaurants[0].id).toBe(101);
       expect(state.restaurant.name).toBe('');
-      expect(state.restaurant.newId).toBe(102);
+      expect(state.newId).toBe(102);
     });
   });
 });
