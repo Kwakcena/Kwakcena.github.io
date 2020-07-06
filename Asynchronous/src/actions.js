@@ -1,6 +1,14 @@
-export function loadInitialData() {
+export function setRegions(regions) {
   return {
-    type: 'loadInitialData',
+    type: 'setRegions',
+    payload: { regions },
+  };
+}
+
+export function loadInitialData() {
+  return async (dispatch) => {
+    // dispatch(setRegions(regions));
+    // dispatch(setCategories(categories));
   };
 }
 
