@@ -27,11 +27,11 @@ export default function CategoriesContainer() {
             onClick={() => handleClick(category.id)}
           >
             {category.name}
-            {/* {selectedCategory ? (
+            {selectedCategory ? (
               <>
                 {category.id === selectedCategory.id ? '(V)' : null}
               </>
-            ) : null} */}
+            ) : null}
           </button>
         </li>
       ))}
