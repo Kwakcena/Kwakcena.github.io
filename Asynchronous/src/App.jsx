@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
+import {
+  loadInitialData,
+} from './actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -12,11 +18,17 @@ function RegionsContainer() {
 function CategoriesContainer() {
   return null;
 }
+
 function RestaurantsContainer() {
   return null;
 }
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadInitialData());
+  });
   return (
     <div>
       <RegionsContainer />
