@@ -37,8 +37,3 @@ export function loadInitialData() {
     dispatch(setCategories(categories));
   };
 }
-
-// TODO: delete this!
-export function xxx() {
-  return {};
-}
