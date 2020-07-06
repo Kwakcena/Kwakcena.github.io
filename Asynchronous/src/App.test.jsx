@@ -14,6 +14,7 @@ test('App', () => {
     regions: [
       { id: 1, name: '서울' },
     ],
+    selectedRegion: null,
   })));
 
   const { queryByText } = render((
