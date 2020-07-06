@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  selectRegion,
+  selectRegion, loadRestaurants,
 } from './actions';
 
 import { get } from './utils';
@@ -16,6 +16,7 @@ export default function RegionsContainer() {
 
   function handleClick(regionId) {
     dispatch(selectRegion(regionId));
+    dispatch(loadRestaurants());
   }
 
   return (
