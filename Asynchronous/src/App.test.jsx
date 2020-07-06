@@ -14,6 +14,9 @@ test('App', () => {
     regions: [
       { id: 1, name: '서울' },
     ],
+    categories: [
+      { id: 1, name: '한식' },
+    ],
     selectedRegion: null,
   })));
 
@@ -22,4 +25,6 @@ test('App', () => {
   ));
 
   expect(dispatch).toBeCalled();
+  expect(queryByText('서울')).not.toBeNull();
+  expect(queryByText('한식')).not.toBeNull();
 });
