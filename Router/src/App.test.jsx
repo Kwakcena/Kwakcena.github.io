@@ -4,15 +4,19 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
 jest.mock('react-redux');
 describe('App', () => {
+  const dispatch = jest.fn();
   beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector(({
-      regions: [],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
       categories: [],
       restaurants: [],
     })));
@@ -40,10 +44,10 @@ describe('App', () => {
     });
   });
 
-  // context('with path /restaurants', () => {
-  //   it('renders the restaurants page', () => {
-  //     const { container } = renderApp({ path: '/restaurants' });
-  //     expect(container).toHaveTextContent('서울');
-  //   });
-  // });
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+      expect(container).toHaveTextContent('서울');
+    });
+  });
 });
