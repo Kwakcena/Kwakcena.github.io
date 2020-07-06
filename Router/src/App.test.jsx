@@ -50,4 +50,11 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
     });
   });
+
+  context('with invalid path', () => {
+    it('renders the not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
