@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-// selectCategory,
+  selectCategory,
 } from './actions';
 
 export default function CategoriesContainer() {
@@ -15,7 +15,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClick(categoryId) {
-    // dispatch(selectCategory(categoryId));
+    dispatch(selectCategory(categoryId));
   }
 
   return (
