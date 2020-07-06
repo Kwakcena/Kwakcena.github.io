@@ -3,25 +3,25 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import CategoriesContainer from './CategoriesContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
-test('CategoriesContainer', () => {
+test('RegionsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector(({
-    categories: [
-      { id: 1, name: '한식' },
+    regions: [
+      { id: 1, name: '서울' },
     ],
   })));
 
   const { container, getByText } = render((
-    <CategoriesContainer />
+    <RegionsContainer />
   ));
 
-  expect(container).toHaveTextContent('한식');
+  expect(container).toHaveTextContent('서울');
 
-  fireEvent.click(getByText('한식'));
+  fireEvent.click(getByText('서울'));
 
   expect(dispatch).toBeCalled();
 });

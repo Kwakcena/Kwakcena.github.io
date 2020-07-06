@@ -2,33 +2,30 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
-import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 import {
-  loadRestaurants,
-  loadCategories,
+  loadInitialData,
 } from './actions';
+
+// 0. 지역, 분류 목록을 얻기
+// 1. 지역 선택 - Regions <- API (0)
+// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
+// 3. 식당 목록 - Restaurants <- API (with region, category) (1과 2 모두 완료된 경우)
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // 원래는 액션을 넣어주면 기존상태에서 새로운 상태를 만들어 주는데,
-    // loadCategories라는 액션을 통해 dispatch가 비동기 액션에
-    // 대한 처리를 하고 상태를 업데이트 하도록 한다.
-    // 이를 위해 redux thunk를 사용한다.
-    dispatch(loadCategories());
-    dispatch(loadRestaurants());
-  }, []);
-
+    dispatch(loadInitialData());
+  });
   return (
     <div>
-      <h1>Restaurants</h1>
+      <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
-      <RestaurantCreateContainer />
     </div>
   );
 }

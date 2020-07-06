@@ -2,7 +2,10 @@ export async function fetchCategories() {
   return [];
 }
 
-// TODO: delete this!
-export function xxx() {
+export async function fetchRegions() {
+  return [];
+}
 
+export async function fetchRestaurants() {
+  return [];
 }
