@@ -14,4 +14,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    historyApiFallback: {
+      // 우리가 요쳥하는 것이 모두 index.html로 가게 한다.
+      index: 'index.html',
+    },
+  },
 };
