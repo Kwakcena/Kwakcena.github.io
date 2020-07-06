@@ -1,21 +1,27 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 test('RegionsContainer', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector(({
     regions: [
       { id: 1, name: '서울' },
     ],
   })));
 
-  const { container } = render((
+  const { container, getByText } = render((
     <RegionsContainer />
   ));
 
   expect(container).toHaveTextContent('서울');
+
+  fireEvent.click(getByText('서울'));
+
+  expect(dispatch).toBeCalled();
 });
