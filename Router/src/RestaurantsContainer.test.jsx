@@ -4,7 +4,6 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
@@ -15,10 +14,10 @@ test('RestaurantsContainer', () => {
     ],
   })));
 
+  const Link = ({ children }) => (<>{children}</>);
+
   const { container } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
+    <RestaurantsContainer Link={Link} />
   ));
 
   expect(container).toHaveTextContent('마법사주방');
