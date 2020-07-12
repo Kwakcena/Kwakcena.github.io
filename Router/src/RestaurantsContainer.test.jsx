@@ -14,10 +14,10 @@ test('RestaurantsContainer', () => {
     ],
   })));
 
-  const Link = ({ children }) => (<>{children}</>);
+  const handleClick = jest.fn();
 
   const { container } = render((
-    <RestaurantsContainer Link={Link} />
+    <RestaurantsContainer onClickRestaurant={handleClick} />
   ));
 
   expect(container).toHaveTextContent('마법사주방');
