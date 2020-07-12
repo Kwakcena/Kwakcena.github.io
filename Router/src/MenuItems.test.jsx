@@ -20,12 +20,12 @@ describe('MenuItems', () => {
 
   context('without menu items', () => {
     it('renders no items message', () => {
-      const menuItems = [];
-
-      const { container } = render((
-        <MenuItems menuItems={menuItems} />
-      ));
-      expect(container).toHaveTextContent('메뉴가 없어요');
+      [[], null, undefined].forEach((menuItems) => {
+        const { container } = render((
+          <MenuItems menuItems={menuItems} />
+        ));
+        expect(container).toHaveTextContent('메뉴가 없어요');
+      });
     });
   });
 });
