@@ -28,12 +28,16 @@ describe('RestaurantsPage', () => {
     })));
   });
 
-  it('renders region and category select buttons', () => {
-    const { queryByText } = render((
+  function renderRestaurantsPage() {
+    return render((
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>
     ));
+  }
+
+  it('renders region and category select buttons', () => {
+    const { queryByText } = renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
     expect(queryByText('서울')).not.toBeNull();
@@ -41,11 +45,7 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders links of restaurants', () => {
-    const { container } = render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
-    ));
+    const { container } = renderRestaurantsPage();
 
     expect(container.innerHTML).toContain('<a href="');
   });
