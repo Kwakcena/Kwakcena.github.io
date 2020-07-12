@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchRestaurant } from './services/__mocks__/api';
 
-async function loadRestaurant({ restaurantId }) {
-  const restaurant = await fetchRestaurant({ restaurantId });
-  return restaurant;
-}
+import { useParams } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+
+import { loadRestaurant } from './actions';
 
 export default function RestaurantPage({ params }) {
+  const dispatch = useDispatch();
   const { id } = params || useParams();
 
   useEffect(() => {
-    loadRestaurant({ restaurantId: id });
+    dispatch(loadRestaurant({ restaurantId: id }));
   }, []);
 
   return (
