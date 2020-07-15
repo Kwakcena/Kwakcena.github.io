@@ -8,12 +8,15 @@ describe('LoginForm', () => {
   it('renders input controls and listens change events', () => {
     const handleChange = jest.fn();
 
-    const { getByLabelText } = render((
-      <LoginForm onChange={handleChange} />
-    ));
-
     const email = 'test@test';
     const password = '1234';
+
+    const { getByLabelText } = render((
+      <LoginForm
+        fields={{ email, password }}
+        onChange={handleChange}
+      />
+    ));
 
     const controls = [
       {
