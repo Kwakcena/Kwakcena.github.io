@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function LoginFormContainer() {
+export default function LoginForm() {
 
   function handleClick() {
     // TODO :
