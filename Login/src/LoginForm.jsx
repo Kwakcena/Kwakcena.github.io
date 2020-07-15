@@ -4,7 +4,7 @@ export default function LoginForm({ onChange, onSubmit }) {
   function handleChange(event) {
     const { target: { name, value } } = event;
     onChange({ name, value });
-  };
+  }
 
   return (
     <>
@@ -12,11 +12,11 @@ export default function LoginForm({ onChange, onSubmit }) {
         <label htmlFor="login-email">
           E-mail
         </label>
-        <input 
-          type="email" 
-          id="login-email" 
+        <input
+          type="email"
+          id="login-email"
           name="email"
-          onChange={handleChange}  
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -32,5 +32,5 @@ export default function LoginForm({ onChange, onSubmit }) {
         Log In
       </button>
     </>
-  )
+  );
 }

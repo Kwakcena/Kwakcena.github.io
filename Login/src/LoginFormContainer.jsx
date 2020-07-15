@@ -15,5 +15,5 @@ export default function LoginFormContainer() {
 
   return (
     <LoginForm onSubmit={handleSubmit} />
-  )
+  );
 }
