@@ -6,6 +6,7 @@ import { render } from '@testing-library/react';
 
 import LoginPage from './LoginPage';
 
+jest.mock('react-redux');
 describe('LoginPage', () => {
   it('renders Log-In title', () => {
     const { container } = render((
