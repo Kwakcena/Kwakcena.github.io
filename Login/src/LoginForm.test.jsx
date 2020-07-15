@@ -13,7 +13,7 @@ describe('LoginForm', () => {
     handleSubmit.mockClear();
   });
 
-  function renderLoginForm({ email, password }) {
+  function renderLoginForm({ email, password } = {}) {
     return render((
       <LoginForm
         fields={{ email, password }}
@@ -23,31 +23,32 @@ describe('LoginForm', () => {
     ));
   }
 
-  it('renders input controls and listens change events', () => {
+  it('renders input controls', () => {
     const email = 'test@test';
     const password = '1234';
     const controls = [
-      {
-        label: 'E-mail',
-        name: 'email',
-        origin: email,
-        value: 'tester@example.com',
-      },
-      {
-        label: 'Password',
-        name: 'password',
-        origin: password,
-        value: 'test',
-      },
+      { label: 'E-mail', value: email },
+      { label: 'Password', value: password },
     ];
 
     const { getByLabelText } = renderLoginForm({ email, password });
 
-    controls.forEach(({
-      label, name, origin, value,
-    }) => {
+    controls.forEach(({ label, value }) => {
       const input = getByLabelText(label);
-      expect(input.value).toBe(origin);
+      expect(input.value).toBe(value);
+    });
+  });
+
+  it('listens change events', () => {
+    const controls = [
+      { label: 'E-mail', name: 'email', value: 'tester@example.com' },
+      { label: 'Password', name: 'password', value: 'test' },
+    ];
+
+    const { getByLabelText } = renderLoginForm();
+
+    controls.forEach(({ label, name, value }) => {
+      const input = getByLabelText(label);
 
       fireEvent.change(input, { target: { value } });
 
