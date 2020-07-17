@@ -85,3 +85,10 @@ export function loadRestaurant({ restaurantId }) {
     dispatch(setRestaurant(restaurant));
   };
 }
+
+export function requestLogin() {
+  return async (dispatch, getState) => {
+    // email, password를 getState로 얻어서 HTTP POST 한다.
+    // dispatch(setAccessToken(accessToken));
+  };
+}
