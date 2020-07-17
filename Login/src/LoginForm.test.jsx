@@ -15,7 +15,7 @@ describe('LoginForm', () => {
     handleSubmit.mockClear();
   });
 
-  function renderLoginForm({ email, password }) {
+  function renderLoginForm({ email, password } = {}) {
     return render((
       <LoginForm
         fields={{ email, password }}
@@ -42,7 +42,7 @@ describe('LoginForm', () => {
   });
 
   it('listens change events', () => {
-    const { getByLabelText } = renderLoginForm({});
+    const { getByLabelText } = renderLoginForm();
     const controls = [
       { label: 'E-mail', name: 'email', value: 'tester@example.com' },
       { label: 'Password', name: 'password', value: 'test' },
@@ -55,7 +55,7 @@ describe('LoginForm', () => {
     });
   });
   it('renders "Log In" button', () => {
-    const { getByText } = renderLoginForm({});
+    const { getByText } = renderLoginForm();
 
     fireEvent.click(getByText('Log In'));
     expect(handleSubmit).toBeCalled();
