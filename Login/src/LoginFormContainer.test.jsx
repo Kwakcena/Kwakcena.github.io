@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginFormContainer from './LoginFormContainer';
 
 jest.mock('react-redux');
@@ -11,7 +11,15 @@ describe('LoginFormContainer', () => {
   const dispatch = jest.fn();
   beforeEach(() => {
     dispatch.mockClear();
+
     useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      loginFields: {
+        email: 'test@test',
+        password: '1234',
+      },
+    }));
   });
 
   it('renders input controls', () => {
@@ -19,8 +27,8 @@ describe('LoginFormContainer', () => {
       <LoginFormContainer />
     ));
 
-    expect(getByLabelText('E-mail')).not.toBeNull();
-    expect(getByLabelText('Password')).not.toBeNull();
+    expect(getByLabelText('E-mail').value).toBe('test@test');
+    expect(getByLabelText('Password').value).toBe('1234');
   });
 
   it('renders "Log In" button', () => {

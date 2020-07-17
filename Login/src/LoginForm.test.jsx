@@ -7,19 +7,49 @@ import LoginForm from './LoginForm';
 jest.mock('react-redux');
 
 describe('LoginForm', () => {
-  it('renders input controls and listens change events', () => {
-    const handleChange = jest.fn();
-    const { getByLabelText } = render((
-      <LoginForm onChange={handleChange} />
-    ));
+  const handleChange = jest.fn();
+  const handleSubmit = jest.fn();
 
+  beforeEach(() => {
+    handleChange.mockClear();
+    handleSubmit.mockClear();
+  });
+
+  function renderLoginForm({ email, password }) {
+    return render((
+      <LoginForm
+        fields={{ email, password }}
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      />
+    ));
+  }
+
+  it('renders input controls and listens change events', () => {
+    const email = 'test@test';
+    const password = '1234';
+
+    const { getByLabelText } = renderLoginForm({ email, password });
     const controls = [
-      { label: 'E-mail', name: 'email', value: 'tester@example.com' },
-      { label: 'Password', name: 'password', value: 'test' },
+      {
+        label: 'E-mail',
+        name: 'email',
+        origin: email,
+        value: 'tester@example.com',
+      },
+      {
+        label: 'Password',
+        name: 'password',
+        origin: password,
+        value: 'test',
+      },
     ];
-    controls.forEach(({ label, name, value }) => {
+
+    controls.forEach(({
+      label, name, origin, value,
+    }) => {
       const input = getByLabelText(label);
-      expect(input).not.toBeNull();
+      expect(input.value).toBe(origin);
       fireEvent.change(input, { target: { value } });
 
       expect(handleChange).toBeCalledWith({ name, value });
@@ -27,11 +57,7 @@ describe('LoginForm', () => {
   });
 
   it('renders "Log In" button', () => {
-    const handleSubmit = jest.fn();
-
-    const { getByText } = render((
-      <LoginForm onSubmit={handleSubmit} />
-    ));
+    const { getByText } = renderLoginForm({});
 
     fireEvent.click(getByText('Log In'));
     expect(handleSubmit).toBeCalled();
