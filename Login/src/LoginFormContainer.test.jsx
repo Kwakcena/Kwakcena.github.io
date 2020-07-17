@@ -1,10 +1,19 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
+import { useDispatch } from 'react-redux';
 import LoginFormContainer from './LoginFormContainer';
 
+jest.mock('react-redux');
+
 describe('LoginFormContainer', () => {
+  const dispatch = jest.fn();
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   it('renders input controls', () => {
     const { getByLabelText } = render((
       <LoginFormContainer />
@@ -20,5 +29,8 @@ describe('LoginFormContainer', () => {
     ));
 
     expect(getByText('Log In')).toHaveAttribute('type', 'button');
+    fireEvent.click(getByText('Log In'));
+
+    expect(dispatch).toBeCalled();
   });
 });
