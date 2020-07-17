@@ -7,13 +7,20 @@ import LoginForm from './LoginForm';
 jest.mock('react-redux');
 
 describe('LoginForm', () => {
-  it('renders input controls', () => {
+  it('renders input controls and listens change events', () => {
+    const handleChange = jest.fn();
     const { getByLabelText } = render((
-      <LoginForm />
+      <LoginForm onChange={handleChange} />
     ));
 
     expect(getByLabelText('E-mail')).not.toBeNull();
     expect(getByLabelText('Password')).not.toBeNull();
+
+    fireEvent.change(getByLabelText('E-mail'), {
+      target: { value: 'tester@example.com' },
+    });
+
+    expect(handleChange).toBeCalled();
   });
 
   it('renders "Log In" button', () => {
