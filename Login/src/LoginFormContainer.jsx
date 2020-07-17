@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useDispatch } from 'react-redux';
 
 import LoginForm from './LoginForm';
@@ -10,11 +11,11 @@ import {
 export default function LoginFormContainer() {
   const dispatch = useDispatch();
 
-  function handleClick() {
+  function handleSubmit() {
     dispatch(requestLogin());
   }
 
   return (
-    <LoginForm />
+    <LoginForm onSubmit={handleSubmit} />
   );
 }
