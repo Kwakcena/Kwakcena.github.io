@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import TextField from './TextField';
 
@@ -52,5 +52,26 @@ describe('TextField', () => {
 
       expect(container).toContainHTML('type="text"');
     });
+  });
+
+  it('listens change events', () => {
+    const handleChange = jest.fn();
+
+    const name = 'score';
+    const value = '5';
+
+    const { getByLabelText } = render((
+      <TextField
+        label="평점"
+        name={name}
+        onChange={handleChange}
+      />
+    ));
+
+    fireEvent.change(getByLabelText('평점'), {
+      target: { value },
+    });
+
+    expect(handleChange).toBeCalledWith({ name, value });
   });
 });
