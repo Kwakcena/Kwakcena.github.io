@@ -13,4 +13,12 @@ describe('LoginFormContainer', () => {
     expect(getByLabelText('E-mail')).not.toBeNull();
     expect(getByLabelText('Password')).not.toBeNull();
   });
+
+  it('renders "Log In" button', () => {
+    const { getByText } = render((
+      <LoginFormContainer />
+    ));
+
+    expect(getByText('Log In')).toHaveAttribute('type', 'button');
+  });
 });
