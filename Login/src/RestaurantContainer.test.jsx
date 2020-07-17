@@ -47,6 +47,13 @@ describe('RestaurantContainer', () => {
       expect(container).toHaveTextContent('서울시');
     });
 
+    it('renders review write fields', () => {
+      const { queryByLabelText } = renderRestaurantContainer();
+
+      expect(queryByLabelText('평점')).not.toBeNull();
+      expect(queryByLabelText('리뷰 내용')).not.toBeNull();
+    });
+
     it('listens change events', () => {
       const { getByLabelText } = renderRestaurantContainer();
 
