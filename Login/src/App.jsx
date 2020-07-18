@@ -17,11 +17,13 @@ import NotFoundPage from './NotFoundPage';
 
 import { setAccessToken } from './actions';
 
+import { loadItem } from './services/storage';
+
 export default function App() {
   // TODO: localStorage에서 accessToken 가져오기.
   const dispatch = useDispatch();
 
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = loadItem('accessToken');
   if (accessToken) {
     dispatch(setAccessToken(accessToken));
   }
