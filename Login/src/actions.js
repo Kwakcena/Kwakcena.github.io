@@ -116,7 +116,7 @@ export function changeReviewField({ name, value }) {
   };
 }
 
-export function postReview() {
+export function sendReview() {
   return async (dispatch, getState) => {
     // TODO:
   };
