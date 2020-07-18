@@ -99,7 +99,7 @@ describe('App', () => {
       loadItem.mockImplementation(() => accessToken);
     });
 
-    it('calls dispatch with setAccessToken action', () => {
+    it('calls dispatch with "setAccessToken" action', () => {
       renderApp({ path: '/' });
       expect(dispatch).toBeCalledWith({
         type: 'setAccessToken',

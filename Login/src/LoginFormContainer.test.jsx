@@ -22,38 +22,40 @@ describe('LoginFormContainer', () => {
     }));
   });
 
-  it('renders input controls', () => {
-    const { getByLabelText } = render((
-      <LoginFormContainer />
-    ));
+  context('when logged out', () => {
+    it('renders input controls', () => {
+      const { getByLabelText } = render((
+        <LoginFormContainer />
+      ));
 
-    expect(getByLabelText('E-mail').value).toBe('test@test');
-    expect(getByLabelText('Password').value).toBe('1234');
-  });
-
-  it('listens change events', () => {
-    const { getByLabelText } = render((
-      <LoginFormContainer />
-    ));
-
-    fireEvent.change(getByLabelText('E-mail'), {
-      target: { value: 'new email' },
+      expect(getByLabelText('E-mail').value).toBe('test@test');
+      expect(getByLabelText('Password').value).toBe('1234');
     });
 
-    expect(dispatch).toBeCalledWith({
-      type: 'changeLoginField',
-      payload: { name: 'email', value: 'new email' },
+    it('listens change events', () => {
+      const { getByLabelText } = render((
+        <LoginFormContainer />
+      ));
+
+      fireEvent.change(getByLabelText('E-mail'), {
+        target: { value: 'new email' },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'changeLoginField',
+        payload: { name: 'email', value: 'new email' },
+      });
     });
-  });
 
-  it('renders "Log In" button', () => {
-    const { getByText } = render((
-      <LoginFormContainer />
-    ));
+    it('renders "Log In" button', () => {
+      const { getByText } = render((
+        <LoginFormContainer />
+      ));
 
-    expect(getByText('Log In')).toHaveAttribute('type', 'button');
-    fireEvent.click(getByText('Log In'));
+      expect(getByText('Log In')).toHaveAttribute('type', 'button');
+      fireEvent.click(getByText('Log In'));
 
-    expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalled();
+    });
   });
 });
