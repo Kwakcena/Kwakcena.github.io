@@ -92,7 +92,7 @@ describe('App', () => {
     });
   });
 
-  context('when logged out', () => {
+  context('when logged in', () => {
     const accessToken = 'ACCESS_TOKEN';
 
     beforeEach(() => {
