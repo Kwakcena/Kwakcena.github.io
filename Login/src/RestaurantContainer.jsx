@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetail from './RestaurantDetail';
 
+import ReviewForm from './ReviewForm';
+
 import {
   loadRestaurant,
   changeReviewField,
 } from './actions';
-
-import ReviewForm from './ReviewForm';
 
 import { get } from './utils';
 
