@@ -105,7 +105,12 @@ export function changeLoginField({ name, value }) {
 export function requestLogin() {
   return async (dispatch, getState) => {
     const { loginFields: { email, password } } = getState();
+
     const accessToken = await postLogin({ email, password });
+
+    // TODO: 로그인 성공하면 localStorage에 저장한다.
+    localStorage.setItem('accessToken', accessToken);
+
     dispatch(setAccessToken(accessToken));
   };
 }
