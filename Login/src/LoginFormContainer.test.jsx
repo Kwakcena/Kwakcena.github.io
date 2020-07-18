@@ -19,10 +19,13 @@ describe('LoginFormContainer', () => {
         email: 'test@test',
         password: '1234',
       },
+      accessToken: given.accessToken,
     }));
   });
 
   context('when logged out', () => {
+    given('accessToken', () => '');
+
     it('renders input controls', () => {
       const { getByLabelText } = render((
         <LoginFormContainer />
@@ -56,6 +59,22 @@ describe('LoginFormContainer', () => {
       fireEvent.click(getByText('Log In'));
 
       expect(dispatch).toBeCalled();
+    });
+  });
+
+  context('when logged in', () => {
+    given('accessToken', () => 'ACCESS_TOKEN');
+    it('renders "Log out" button', () => {
+      const { getByText } = render((
+        <LoginFormContainer />
+      ));
+
+      fireEvent.click(getByText('Log out'));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'setAccessToken',
+        payload: { accessToken: '' },
+      });
     });
   });
 });
