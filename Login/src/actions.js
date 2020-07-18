@@ -117,6 +117,12 @@ export function requestLogin() {
   };
 }
 
+export function logout() {
+  return {
+    type: 'logout',
+  };
+}
+
 export function changeReviewField({ name, value }) {
   return {
     type: 'changeReviewField',
