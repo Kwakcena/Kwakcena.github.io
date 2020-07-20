@@ -155,5 +155,7 @@ export function sendReview({ restaurantId }) {
     });
 
     dispatch(loadReview({ restaurantId }));
+    dispatch(changeReviewField({ name: 'description', value: '' }));
+    dispatch(changeReviewField({ name: 'score', value: '' }));
   };
 }

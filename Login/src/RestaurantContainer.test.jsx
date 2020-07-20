@@ -47,6 +47,11 @@ describe('RestaurantContainer', () => {
       ],
     }));
 
+    given('reviewFields', () => ({
+      score: '',
+      description: '',
+    }));
+
     it('renders name and address', () => {
       const { container } = renderRestaurantContainer();
 
