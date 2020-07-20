@@ -54,6 +54,24 @@ describe('TextField', () => {
     });
   });
 
+  it('renders value', () => {
+    const handleChange = jest.fn();
+
+    const name = 'score';
+    const value = '5';
+
+    const { getByLabelText } = render((
+      <TextField
+        label="평점"
+        name={name}
+        value={value}
+        onChange={handleChange}
+      />
+    ));
+
+    expect(getByLabelText('평점').value).toBe(value);
+  });
+
   it('listens change events', () => {
     const handleChange = jest.fn();
 
