@@ -6,3 +6,4 @@
 - [x] 4강: [Redux 사용하기](https://github.com/Kwakcena/CodeSoom-studynote/pull/4)
 - [x] 5강: [Redux-thunk 이용해서 비동기 처리하기](https://github.com/Kwakcena/CodeSoom-studynote/pull/5) [5강 과제 풀이](https://github.com/Kwakcena/CodeSoom-studynote/pull/6)
 - [x] 6강: [Router](https://github.com/Kwakcena/CodeSoom-studynote/pull/7)
+- [x] 7강: [Login](https://github.com/Kwakcena/CodeSoom-studynote/pull/10) / [7강 과제 풀이](https://github.com/Kwakcena/CodeSoom-studynote/pull/11)
