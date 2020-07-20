@@ -96,6 +96,17 @@ const reducers = {
       },
     };
   },
+
+  setReviews(state, { payload: { reviews } }) {
+    const { restaurant } = state;
+    return {
+      ...state,
+      restaurant: {
+        ...restaurant,
+        reviews,
+      },
+    };
+  },
 };
 
 function defaultReducer(state) {
