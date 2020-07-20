@@ -130,6 +130,12 @@ export function changeReviewField({ name, value }) {
   };
 }
 
+export function clearReviewFields() {
+  return {
+    type: 'clearReviewFields',
+  };
+}
+
 export function setReviews(reviews) {
   return {
     type: 'setReviews',
@@ -155,7 +161,8 @@ export function sendReview({ restaurantId }) {
     });
 
     dispatch(loadReview({ restaurantId }));
-    dispatch(changeReviewField({ name: 'description', value: '' }));
-    dispatch(changeReviewField({ name: 'score', value: '' }));
+    // dispatch(changeReviewField({ name: 'description', value: '' }));
+    // dispatch(changeReviewField({ name: 'score', value: '' }));
+    dispatch(clearReviewFields());
   };
 }

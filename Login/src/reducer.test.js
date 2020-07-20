@@ -12,6 +12,7 @@ import {
   logout,
   changeReviewField,
   setReviews,
+  clearReviewFields,
 } from './actions';
 
 describe('reducer', () => {
@@ -212,6 +213,20 @@ describe('reducer', () => {
     expect(state.reviewFields.score).toBe('5');
   });
 
+  describe('clearReviewFields', () => {
+    it('clears fields of review', () => {
+      const initialState = {
+        reviewFields: {
+          score: 'SCORE',
+          description: 'DESCRIPTION',
+        },
+      };
+
+      const state = reducer(initialState, clearReviewFields());
+      expect(state.reviewFields.score).toBe('');
+      expect(state.reviewFields.description).toBe('');
+    });
+  });
   describe('set reviews', () => {
     it('changes reviews of the current restaurant', () => {
       const reviews = [
