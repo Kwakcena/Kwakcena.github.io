@@ -9,7 +9,7 @@ import {
   requestLogin,
   changeLoginField,
   logout,
-} from './actions';
+} from './slice';
 
 import { get } from './utils';
 
