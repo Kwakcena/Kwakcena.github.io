@@ -49,6 +49,7 @@ export default function RestaurantContainer({ restaurantId }) {
           onSubmit={handleSubmit}
         />
       ) : null}
+      {/* reviews가 바뀌지 않는다면 Reviews에 해당하는 Virtural DOM도 update 하지 않게 하려면? */}
       <Reviews reviews={restaurant.reviews} />
     </>
   );
